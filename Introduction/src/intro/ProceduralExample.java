@@ -10,6 +10,7 @@ package intro;
 public class ProceduralExample {
   public static void main(String[] args){
   String[] names={"Jimmian","Joseph","JOrdan"};
-  System.out.println("My name is"+names[0]);
+  String[] years={"soph","senior","fresh"};
+  System.out.println("My name is "+ names[0] + years[1]);
   }
 }
