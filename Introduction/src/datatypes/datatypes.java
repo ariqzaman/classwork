@@ -20,6 +20,10 @@ public class datatypes {
 		System.out.println("d2 : " + d2); 
 		System.out.println("d3 : " + d3);  
 		System.out.println("d1 - d2 : " + (d1 - d2));
+		
+		String ten = "10";
+		String two = "2";
+		if (ten.compareTo(two) > 0) System.out.println("xd");
 	}
 
 }
