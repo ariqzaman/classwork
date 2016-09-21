@@ -1,3 +1,4 @@
+package datatypes;
 import java.util.Random;
 
 public class mathrandom {
