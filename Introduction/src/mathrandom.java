@@ -12,6 +12,6 @@ public class mathrandom {
 		Random gen = new Random();
 		return gen.nextInt(6);
 		
-	}
+	} 
 
 }
