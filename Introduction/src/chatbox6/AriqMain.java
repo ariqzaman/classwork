@@ -1,14 +1,15 @@
-package datatypes;
+package chatbox6;
 
 import java.util.Scanner;
 
-public class StringPractice {
+public class AriqMain {
 
 	static Scanner input;
 	static String user;
 	static int lineCount;
 	static boolean inloop;
 	static String response;
+	static Topic school;
 
 	public static void main(String[] args) {
 		createTopics();
@@ -33,6 +34,10 @@ public class StringPractice {
 			response = getInput();
 			if (response.indexOf("good")>=0){
 				print("im so happy u r good");
+			}
+			else if(response.indexOf("school")>=0){
+				inloop = false;
+				school.talk();
 			}
 			else{
 				print("im sorry");
@@ -87,9 +92,7 @@ public class StringPractice {
 		System.out.println(printString);
 	}
 
-	public static void createTopics() {
-		input = new Scanner(System.in);
-	}
+
 
 
 	public static void demonstrateStringMethods(){
@@ -107,5 +110,10 @@ public class StringPractice {
 			System.out.println("word1 is b4 word2");
 		}
 	}
-
+	
+	public static void createTopics() {
+		input = new Scanner(System.in);
+		school = new School();
+	}
+		
 }
