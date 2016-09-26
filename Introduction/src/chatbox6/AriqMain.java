@@ -14,7 +14,7 @@ public class AriqMain {
 	public static void main(String[] args) {
 		createTopics();
 		lineCount = 0;
-		demonstrateStringMethods();
+		//demonstrateStringMethods();
 		promptName();
 		talkForever();
 	}
@@ -32,11 +32,11 @@ public class AriqMain {
 		while(inloop){
 			print("hello"+user+"how are you");
 			response = getInput();
-			if (response.indexOf("good")>=0){
+			if (findKeyword(response, "good", 0)){
 				print("im so happy u r good");
 			}
 			else if(response.indexOf("school")>=0){
-				inloop = false;
+				inloop = false;//exit this loop
 				school.talk();
 			}
 			else{
@@ -44,6 +44,35 @@ public class AriqMain {
 			}
 		}
 	}
+	private static boolean findKeyword(String searchString, String key, int startIndex) {
+		String phrase = searchString.trim();
+		//set letters to lowercase 
+		phrase = phrase.toLowerCase();
+		key = key.toLowerCase();
+		//find position
+		int psn = phrase.indexOf(key);
+		//keep looking for word till u find right contect
+		while (psn >= 0){
+			String before = " ";
+			String after = " ";
+			if(psn + key.length() < phrase.length()){
+				after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
+				
+			}
+			if(psn > 0){
+				before = phrase.substring(psn-1, psn).toLowerCase();
+				
+			}
+			if(before.compareTo("a")<0 && after.compareTo("a")<0){
+				return true;
+			}
+			
+			psn = phrase.indexOf(key, psn+1);
+		}
+		
+		return false;
+	}
+	
 	public static String getInput(){
 		return input.nextLine(); 
 	}

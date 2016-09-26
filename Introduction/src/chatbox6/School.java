@@ -12,12 +12,15 @@ public class School implements Topic {
 		while(inSchoolLoop){
 			AriqMain.print("tell me about school");
 			schoolResponse = AriqMain.getInput();
-			if(schoolResponse.indexOf("stop")>=0){}
+			if(schoolResponse.indexOf("stop")>=0){
+			inSchoolLoop = false; 
+			AriqMain.talkForever();
 		}
 		else{
 			AriqMain.print("that is my fav part of school too");
 		}
 
 	}
-
+	}
 }
+
