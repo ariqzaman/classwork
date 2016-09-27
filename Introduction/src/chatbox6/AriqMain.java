@@ -10,6 +10,7 @@ public class AriqMain {
 	static boolean inloop;
 	static String response;
 	static Topic school;
+	static Topic like;
 
 	public static void main(String[] args) {
 		createTopics();
@@ -32,10 +33,11 @@ public class AriqMain {
 		while(inloop){
 			print("hello"+user+"how are you");
 			response = getInput();
-			if (findKeyword(response, "good", 0)){
-				print("im so happy u r good");
+			if (findKeyword(response, "good", 0) >= 0){
+				print("im so happy u r good");				
+				
 			}
-			else if(response.indexOf("school")>=0){
+			else if(findKeyword(response, "like", 0) >=0){
 				inloop = false;//exit this loop
 				school.talk();
 			}
@@ -44,33 +46,84 @@ public class AriqMain {
 			}
 		}
 	}
-	private static boolean findKeyword(String searchString, String key, int startIndex) {
+	
+	
+	
+	private static int findKeyword(String searchString,
+			String key,
+			int startIndex) {
 		String phrase = searchString.trim();
 		//set letters to lowercase 
 		phrase = phrase.toLowerCase();
 		key = key.toLowerCase();
-		//find position
+		
+//		System.out.println("the phrase is "+ phrase);
+//		System.out.println("the key is "+ key);
+		
+		
+		//find position of key
 		int psn = phrase.indexOf(key);
+		
+//		System.out.println("the position  found is  "+ psn);
+		
+		
 		//keep looking for word till u find right contect
 		while (psn >= 0){
 			String before = " ";
 			String after = " ";
 			if(psn + key.length() < phrase.length()){
 				after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
+//				System.out.println("the character after "+ key + " is "+ after);
 				
 			}
 			if(psn > 0){
 				before = phrase.substring(psn-1, psn).toLowerCase();
+//				System.out.println("the character before "+ key + " is "+ before);
 				
 			}
 			if(before.compareTo("a")<0 && after.compareTo("a")<0){
-				return true;
+//				System.out.println(key +" was found at "+ psn );
+				
+				
+				if(noNegations(phrase, psn)){
+					return psn;	
+					
+				}
+				
 			}
 			
 			psn = phrase.indexOf(key, psn+1);
+//			System.out.println(key + " was not found "+" checking "+psn);
 		}
 		
-		return false;
+		return -1;
+	}
+	
+	//helper method - a method that contributes functionallity 
+	//to another method
+	//common when u do the same things repeatedly
+	//more readable
+	// method is private because it is only used by the method
+	private static boolean noNegations(String phrase, int index){
+		//check for "no" (3 characters)
+		// check to see if there is space for the word "no" to be in front of the index
+		if(index - 3 >= 0 && phrase.substring(index-3,index).equals("no ")){
+			return false;
+		}
+		//check for not
+		if(index - 4 >= 0 && phrase.substring(index-4,index).equals("not ")){
+			return false;
+		}
+		//never
+		if(index - 6 >= 0 && phrase.substring(index-6,index).equals("never ")){
+			return false;
+		}
+		//n't
+		if(index - 4 >= 0 && phrase.substring(index-4,index).equals("n't ")){
+			return false;
+		}
+		return true;
+		
 	}
 	
 	public static String getInput(){
@@ -84,6 +137,11 @@ public class AriqMain {
 
 	}
 
+	
+	
+	
+	
+	
 	//public static void print(String s){
 	//	lineCount++;
 	//	System.out.println("Line # "+ lineCount+ ": " + s);
@@ -143,6 +201,8 @@ public class AriqMain {
 	public static void createTopics() {
 		input = new Scanner(System.in);
 		school = new School();
+		like = new AriqLike();
+				
 	}
 		
 }
