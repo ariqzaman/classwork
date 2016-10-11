@@ -3,6 +3,14 @@ package arrays;
 public class ArraysMain {
 
 	public static void main(String[] args) {
+		long StartTime = System.currentTimeMillis();
+		arraysIntroMethod();
+		long endTime = System.currentTimeMillis();
+		System.out.println("completed method in " + (endTime - StartTime) + " seconds");
+		
+	}
+	
+	public static void arraysIntroMethod(){
 		// construct 3 arrays
 		//these 2 methods do the same thing
 		//primitive type arrays fill with zeros 0, 0.0, false
@@ -32,6 +40,14 @@ public class ArraysMain {
 		//these 2 constructors are different
 		String[] strings1 = {"","",""};
 		String[] strings2 = new String[3];
+		
+		//bottom one fills null not empty
+		for(String s:strings1){
+			System.out.println(s);
+		}
+		for(String s:strings2){
+			System.out.println(s);
+		}
 	}
 
 }
