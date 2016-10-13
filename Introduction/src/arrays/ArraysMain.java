@@ -4,12 +4,34 @@ public class ArraysMain {
 
 	public static void main(String[] args) {
 		long StartTime = System.currentTimeMillis();
-		arraysIntroMethod();
+		//arraysIntroMethod();
+		String[] someStrings = new String[99];
+		populateArray(someStrings);
+		printArray(someStrings);
+		changeString(someStrings[100]);
 		long endTime = System.currentTimeMillis();
 		System.out.println("completed method in " + (endTime - StartTime) + " seconds");
 		
 	}
 	
+	public static void changeString(String s){
+		s = "this shtring has been changed";
+	}
+	
+	private static void printArray(String[] a) {
+		// TODO Auto-generated method stub
+		for(String s: a){
+			System.out.println(s);
+			}
+	}
+
+	private static void populateArray(String[] a) {
+		// TODO Auto-generated method stub
+		for(int index = 0; index < a.length; index++){
+			a[index] = "value "+ (index+1);
+		}
+	}
+
 	public static void arraysIntroMethod(){
 		// construct 3 arrays
 		//these 2 methods do the same thing
@@ -40,15 +62,23 @@ public class ArraysMain {
 		//these 2 constructors are different
 		String[] strings1 = {"","",""};
 		String[] strings2 = new String[3];
+//		strings2[0] = "value 1";
+//		strings2[1] = "value 2";
+//		strings2[2] = "value 3";
 		
 		//bottom one fills null not empty
 		for(String s:strings1){
 			System.out.println(s);
 		}
+		//this loop instantiates the strings
+		for(int index = 0; index < strings2.length; index++){
+			strings2[index] = "value "+ (index+1);
+			
+		}
+		//this loop prints the strings
 		for(String s:strings2){
 			System.out.println(s);
 		}
 	}
 
 }
-//sdfg
