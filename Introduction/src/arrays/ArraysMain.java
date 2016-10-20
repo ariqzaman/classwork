@@ -6,12 +6,33 @@ public class ArraysMain {
 		long StartTime = System.currentTimeMillis();
 		//arraysIntroMethod();
 		String[] someStrings = new String[99];
+		int ten = 10;
+		System.out.println("ten is increased by"+ten);
+		System.out.println("before "+ someStrings[99]);
+		
 		populateArray(someStrings);
 		printArray(someStrings);
 		changeString(someStrings[100]);
 		long endTime = System.currentTimeMillis();
 		System.out.println("completed method in " + (endTime - StartTime) + " seconds");
+		changeArrayElement(someStrings, 99);
+		SampleElement sample = new SampleElement(10);
+		sample.increase();
+		System.out.println("sample element has a number equal to"+ sample.getNumber());
+	}
+	public static void passByValueDemonstration(){
+				
+	}
+	private static void changeArrayElement(String[] someStrings, int i) {
+		// TODO Auto-generated method stub
+		someStrings[i] = "new item"+ (i+1);
 		
+	}
+	private static void changeArray(String[] someStrings){
+		someStrings = new String[100];
+		for(int index = 0; index < someStrings.length; index++){
+			someStrings[index] = " new item "+ (index+1);
+		}
 	}
 	
 	public static void changeString(String s){
