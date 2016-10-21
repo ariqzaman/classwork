@@ -30,9 +30,11 @@ public class ArraySearch {
 //	    	
 //	     return -1;
 //	    }
+	
 	    
 	    private static boolean checkHalfway(int[] arr, int searchValue, int begin, int end){
 			return searchValue < arr[(begin+end+1)];
 	    	
 	    }
+	    
 }
