@@ -56,7 +56,7 @@ public class ArrayMethods {
 	    	}
 	     return -1;
 	    }
-	    
+	    //--------------------------------------------------------------------------------------------------------------
 	    public static int searchSorted(int[] sortedArrayToSearch, int key){
 	    /**
 	     * this method is exactly like the one above, except the parameter sortedArrayToSearch will
@@ -97,7 +97,7 @@ public class ArrayMethods {
 	    
 	    
 	    public static double[] getStats(double[] array){
-	    	//----------------------------------------------------------------------------------------
+	    	//-----------------------------------------------------------------------------------------------------------------
 	        /** 
 	         * This method return a double[] contain a WHOLE BUNCH of stats
 	         * The double array must keep the following stats about the array parameter:
@@ -174,7 +174,7 @@ public class ArrayMethods {
 	    
 
 	    public static int longestConsecutiveSequence(int[] array1){
-	    	//-------------------------------------------------------------------------------
+	    	//--------------------------------------------------------------------------------------------------------
 	        /**This method counts the longest consequtive sequence in an array.
 	         * It does not matter where the sequence begins
 	         * If there are no consecutive numbers, the method should return '1'
