@@ -14,17 +14,20 @@ public class Swap {
 	
 	
 	private static void shuffle(int[] arr) {
-		
+		for(int i = 0; i<arr.length; i++){
+			int random = (int)(Math.random()*arr.length);
+			swap(arr,i,random);
+		}
 		
 		
 	}
 
 
-//	private static void swap(int[] arr, int i, int j){
-//		int placeholder = arr[i];
-//				arr[j]=arr[i];
-//				arr[i] = placeholder;
-//	}
-	
-	
-}
+	private static void swap(int[] arr, int i, int j){
+		int placeholder = arr[i];
+				arr[j]=arr[i];
+				arr[i] = placeholder;
+	}
+
+
+	}
