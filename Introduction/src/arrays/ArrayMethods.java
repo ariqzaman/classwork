@@ -271,8 +271,10 @@ public class ArrayMethods {
 	         * CHALLENGE
 	         * For extra credit, make your method handle NEGATIVE n
 	         * */
+	    	for(int i = 0; i<n; i++){
+	    		
+	    		
+	    	}
 	    }
-	    
-
 
 	}

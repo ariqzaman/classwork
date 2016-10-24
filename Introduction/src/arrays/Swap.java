@@ -28,6 +28,6 @@ public class Swap {
 				arr[j]=arr[i];
 				arr[i] = placeholder;
 	}
+	
 
-
-	}
+}
