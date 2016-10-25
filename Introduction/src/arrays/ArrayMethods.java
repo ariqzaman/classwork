@@ -276,5 +276,44 @@ public class ArrayMethods {
 	    		
 	    	}
 	    }
+	    //--------------HELPER
+	    public static int countUnderBound(double[] arr, double d){
+	    	int arrayLength = 0;
+	    	for(int i=0; i<arr.length; i++){
+	    		if(arr[i]<d){
+	    			arrayLength++;
+	    		}
+	    	}
+			return arrayLength;
+	    	
+	    }
+	    //--------------HELPER
+	    public static int[] getSubArray(int[] arr, int startIndex, int endIndex){
+	    	int[] subArray = new int[endIndex - startIndex+1];
+	    	for(int i = 0; i<subArray.length; i++){
+	    		subArray[i] = arr[startIndex + i];
+	    	}
+			return arr;
+	    	
+	    }
+	    //===============HELPER
+	    public static boolean contains(int arr[], int[] subArray){
+	    	for(int i = 0; i<arr.length; i++){
+	    		if(arr[i] == subArray[0]){
+	    			int j = i;
+	    			while(j<arr.length && j<subArray.length){
+	    				if(subArray[j]==arr[i] && j == subArray.length){
+	    					return true;
+	    				}else if(subArray[j] != arr[i]){
+	    					break;
+	    				}
+	    				j++;
+	    			}
+	    		}
+	    	}
+			return false;
+	    	
+	    }
+	    //========================
 
 	}
