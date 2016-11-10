@@ -16,6 +16,21 @@ public class CaveExplorer {
 
 			}
 		}
+		
+		
+		caves[0][2] = new EventRoom("this is the room where hujfg", new GameStartEvent());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		currentRoom = caves[0][1];
 		
 		currentRoom.enter();
@@ -29,6 +44,7 @@ public class CaveExplorer {
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door());
 		
 		inventory = new Inventory();
+		in = new Scanner(System.in);
 		
 		startExploring();
 		
@@ -46,6 +62,11 @@ public class CaveExplorer {
 			currentRoom.interpretInput(input);
 		}
 		
+	}
+
+	public static void print(String string) {
+		// TODO Auto-generated method stub
+		System.out.println(string);
 	}
 	
 
