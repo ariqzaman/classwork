@@ -1,16 +1,16 @@
 package CaveExplorer;
 
 public class Inventory {
+	
 	private boolean hasMap;
 	private String map;
 	
 	public Inventory(){
-		hasMap = false;
+		hasMap = true;
 		updateMap();
 	}
 	
 	public void updateMap() {
-		
 		map = " ";
 		for(int i = 0; i <CaveExplorer.caves[0].length-1; i++){
 			map += "____";//4 underscores
@@ -22,13 +22,12 @@ public class Inventory {
 				String text ="";
 				//a line of text for each row
 				for(CaveRoom cr:row){
-//					 text +="|";
+					//text +="|";
 					//if door is open
 					if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen())
 						text += " ";
-					else{
-						text+= "|";
-					}
+					else
+						text += "|";
 					if(i == 0)
 						text += "   ";
 					else if(i == 1)
@@ -47,19 +46,18 @@ public class Inventory {
 		}//last row
 		
 	}
-		
 	
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		if(hasMap){
 			return map;
-			
-		}else{
+		}
+		else{
 			return "There is nothing in your inventory";
-			
 		}
 	}
-	public void setMap(boolean b){
-		hasMap = b;    
+
+	public void setHasMap(boolean b) {
+		hasMap = b;
 	}
+
 }

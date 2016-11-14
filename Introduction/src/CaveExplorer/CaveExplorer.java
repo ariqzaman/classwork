@@ -9,7 +9,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 
 	public static void main(String args[]) {
-		caves = new CaveRoom[5][5];
+		caves = new CaveRoom[9][16];
 		for (int row = 0; row < caves.length; row++) {
 			for (int col = 0; col < caves[row].length; col++) {
 				caves[row][col] = new CaveRoom("This cave has coordinates" + row + "," + col);
@@ -36,12 +36,80 @@ public class CaveExplorer {
 		currentRoom.enter();
 		
 		//[0][1] is connected to [0][2]
+		caves[0][0].setConnection(CaveRoom.EAST, caves[0][1], new Door());
 		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door());
+		caves[0][2].setConnection(CaveRoom.EAST, caves[0][3], new Door());
 		
 		
-		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door());
 		
-		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door());
+		
+		caves[0][0].setConnection(CaveRoom.SOUTH, caves[1][0], new Door());
+		
+		caves[1][0].setConnection(CaveRoom.SOUTH, caves[2][0], new Door());
+		
+		caves[2][0].setConnection(CaveRoom.SOUTH, caves[3][0], new Door());
+		
+		caves[3][0].setConnection(CaveRoom.SOUTH, caves[4][0], new Door());
+		
+		caves[4][0].setConnection(CaveRoom.SOUTH, caves[5][0], new Door());
+		
+		caves[5][0].setConnection(CaveRoom.SOUTH, caves[6][0], new Door());
+		
+		caves[6][0].setConnection(CaveRoom.SOUTH, caves[7][0], new Door());
+		
+		caves[7][0].setConnection(CaveRoom.SOUTH, caves[8][0], new Door());
+		
+		
+		
+		caves[8][0].setConnection(CaveRoom.EAST, caves[8][1], new Door());
+		caves[8][1].setConnection(CaveRoom.EAST, caves[8][2], new Door());
+		caves[8][2].setConnection(CaveRoom.EAST, caves[8][3], new Door());
+		
+		caves[8][3].setConnection(CaveRoom.NORTH, caves[7][3], new Door());
+		caves[7][3].setConnection(CaveRoom.NORTH, caves[6][3], new Door());
+		
+		caves[6][3].setConnection(CaveRoom.WEST, caves[6][2], new Door());
+		caves[6][3].setConnection(CaveRoom.EAST, caves[6][4], new Door());
+		
+		caves[6][2].setConnection(CaveRoom.NORTH, caves[5][2], new Door());
+		caves[5][2].setConnection(CaveRoom.NORTH, caves[4][2], new Door());
+		caves[4][2].setConnection(CaveRoom.NORTH, caves[3][2], new Door());
+		caves[3][2].setConnection(CaveRoom.NORTH, caves[2][2], new Door());
+		
+		caves[4][0].setConnection(CaveRoom.EAST, caves[4][1], new Door());
+		caves[4][1].setConnection(CaveRoom.EAST, caves[4][2], new Door());
+		
+		caves[0][3].setConnection(CaveRoom.SOUTH, caves[1][3], new Door());
+		caves[1][3].setConnection(CaveRoom.SOUTH, caves[2][3], new Door());
+		caves[2][3].setConnection(CaveRoom.WEST, caves[2][2], new Door());
+		
+		caves[6][4].setConnection(CaveRoom.EAST, caves[6][5], new Door());
+		caves[6][5].setConnection(CaveRoom.EAST, caves[6][6], new Door());
+		caves[6][6].setConnection(CaveRoom.EAST, caves[6][7], new Door());
+		caves[6][7].setConnection(CaveRoom.EAST, caves[6][8], new Door());
+		caves[6][8].setConnection(CaveRoom.EAST, caves[6][9], new Door());
+		caves[6][9].setConnection(CaveRoom.EAST, caves[6][10], new Door());
+		caves[6][10].setConnection(CaveRoom.EAST, caves[6][11], new Door());
+		caves[6][11].setConnection(CaveRoom.EAST, caves[6][12], new Door());
+		caves[6][12].setConnection(CaveRoom.EAST, caves[6][13], new Door());
+		
+		caves[2][3].setConnection(CaveRoom.EAST, caves[2][4], new Door());
+		caves[2][4].setConnection(CaveRoom.EAST, caves[2][5], new Door());
+		caves[2][5].setConnection(CaveRoom.EAST, caves[2][6], new Door());
+		caves[2][6].setConnection(CaveRoom.EAST, caves[2][7], new Door());
+		caves[2][7].setConnection(CaveRoom.EAST, caves[2][8], new Door());
+		caves[2][8].setConnection(CaveRoom.EAST, caves[2][9], new Door());
+		caves[2][9].setConnection(CaveRoom.EAST, caves[2][10], new Door());
+		caves[2][10].setConnection(CaveRoom.EAST, caves[2][11], new Door());
+		caves[2][11].setConnection(CaveRoom.EAST, caves[2][12], new Door());
+		caves[2][12].setConnection(CaveRoom.EAST, caves[2][13], new Door());
+		
+		caves[0][5].setConnection(CaveRoom.SOUTH, caves[1][5], new Door());
+		caves[1][5].setConnection(CaveRoom.SOUTH, caves[2][5], new Door());
+		caves[2][5].setConnection(CaveRoom.SOUTH, caves[3][5], new Door());
+		caves[3][5].setConnection(CaveRoom.SOUTH, caves[4][5], new Door());
+		caves[4][5].setConnection(CaveRoom.SOUTH, caves[5][5], new Door());
+		caves[5][5].setConnection(CaveRoom.SOUTH, caves[6][5], new Door());
 		
 		inventory = new Inventory();
 		in = new Scanner(System.in);
