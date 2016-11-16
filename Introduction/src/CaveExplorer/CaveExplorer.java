@@ -175,6 +175,7 @@ public class CaveExplorer {
 		
 		caves[8][12].setConnection(CaveRoom.NORTH, caves[7][12], new Door());
 		caves[7][12].setConnection(CaveRoom.NORTH, caves[6][12], new Door());
+	
 		
 		
 		

@@ -9,7 +9,7 @@ public class TwoDArrayIntro {
 	public static void main(String[] args) {
 		scanner = new Scanner(System.in);
 
-		int roomsY = 10, roomsX = 10;
+		int roomsY = 16, roomsX = 9;
 		int x = 0, y = 0;
 
 		while (true) {
@@ -18,13 +18,13 @@ public class TwoDArrayIntro {
 			print(roomsY, roomsX, y, x);
 			String input = scanner.nextLine();
 
-			if (input.equals("w") && y + 1 < roomsY) {
+			if (input.equals("s") && y + 1 < roomsX) {
 				y++;
 			} else if (input.equals("a") && x > 0) {
 				x--;
-			} else if (input.equals("s") && y > 0) {
+			} else if (input.equals("w") && y > 0) {
 				y--;
-			} else if (input.equals("d") && x + 1 < roomsX) {
+			} else if (input.equals("d") && x + 1 < roomsY) {
 				x++;
 			}
 		}
