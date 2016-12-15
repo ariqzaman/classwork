@@ -3,11 +3,9 @@ package GUISampleGame;
 import gui.GUIApplication;
 import gui.Screens.CoordinateScreen;
 
-import java.awt.Graphics2D;
-import java.awt.MouseInfo;
-
 public class MouseFollower extends GUIApplication {
 
+	//FIELDS
 	private CoordinateScreen cs;
 	
 	
@@ -18,17 +16,12 @@ public class MouseFollower extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		// TODO Auto-generated method stub
 		cs = new CoordinateScreen(getWidth(), getHeight());
 		setScreen(cs);
-		
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new MouseFollower(800,600);
-		int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-		int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+		new MouseFollower(600,600);
 	}
 
 }
