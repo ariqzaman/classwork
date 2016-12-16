@@ -7,7 +7,7 @@ public class MouseFollower extends GUIApplication {
 
 	//FIELDS
 	private CoordinateScreen cs;
-	
+	public static MouseFollower game;
 	
 	public MouseFollower(int width, int height) {
 		super(width, height);
@@ -21,7 +21,9 @@ public class MouseFollower extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		new MouseFollower(600,600);
+		game = new MouseFollower(600,600);
+		Thread app = new Thread();
+		app.start();
 	}
 
 }
