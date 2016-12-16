@@ -39,8 +39,7 @@ public class Button extends TextLabel {
 			g.setColor(Color.white);
 			String t = getText();
 			int cutoff = t.length();
-			while(cutoff>0 && fm.stringWidth(t())/2,
-			(getHeight()+ fm.getHeight()- fm.getDescent())/2){
+			while(cutoff > 0 && fm.stringWidth(t))/2, (getHeight() + fm.getHeight()- fm.getDescent())/2){
 				cutoff--;
 				t = t.substring(0, cutoff);
 			}
