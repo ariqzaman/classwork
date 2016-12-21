@@ -3,6 +3,9 @@ package gui.components;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
 public abstract class Component implements Visible {
 
 	//FIELDS
@@ -12,15 +15,31 @@ public abstract class Component implements Visible {
 	private int h;
 	private BufferedImage image;
 	
-	public Component(int x, int y, int w, int h) {
+	//CONSTRUCTOR
+	public Component(int x, int y, int w, int h){
 		this.x = x;
 		this.y = y;
-		this. w = w;
+		this.w = w;
 		this.h = h;
-		this.image = new BufferedImage(w,h,
+		image = new BufferedImage(w,h,
 				BufferedImage.TYPE_INT_ARGB);
 		update(image.createGraphics());
 	}
+	
+	public Graphics2D clear(){
+		//resets the picture
+		image = new BufferedImage(w,h,
+				BufferedImage.TYPE_INT_ARGB);
+		return image.createGraphics();
+	}
+	
+	/**
+	 * draw the component
+	 * @param createGraphics
+	 */
+	public abstract void update(Graphics2D g);
+
+
 
 	public BufferedImage getImage() {
 		return image;
@@ -43,6 +62,7 @@ public abstract class Component implements Visible {
 	}
 
 	public boolean isAnimated() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -50,19 +70,4 @@ public abstract class Component implements Visible {
 		update(image.createGraphics());
 	}
 
-	public abstract void update(Graphics2D g);
-	
-	//deletes image to start over
-	public Graphics2D clear(){
-		image = new BufferedImage(w,h,
-				BufferedImage.TYPE_INT_ARGB);
-		return image.createGraphics();
-	}
-	
-	
-	
-	
-	
-	
-	
 }

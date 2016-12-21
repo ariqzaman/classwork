@@ -6,76 +6,56 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class TextArea extends TextLabel {
 
-	private Object String;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
+public class TextArea extends TextLabel {
 
 	public TextArea(int x, int y, int w, int h, String text) {
 		super(x, y, w, h, text);
 	}
-	
-	public void update(Graphics2D g) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setColor(Color.orange);
-		g.fillRoundRect(0, 0, getWidth(), getHeight(), 35, 25);
-		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 35, 25);
-		g.setFont(new Font(getFont(),Font.PLAIN,getSize()));
+
+	public void update(Graphics2D g){
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setFont(new Font(getFont(), Font.PLAIN, getSize()));
 		FontMetrics fm = g.getFontMetrics();
-		
-		if(getText()!= null){
-				String[] words = getText().split(" ");
-				int linePlacement = fm.getHeight();
-				String txt = "";
-				while(!words[words.length-1].equals(null))
-					g.setColor(Color.white);
-					String t = getText();
-					int cutoff = t.length();
-					
-					while(cutoff > 0 && fm.stringWidth(t) > getWidth()){
-						cutoff --;
-						t = t.substring(0,cutoff); 
+		g.setColor(Color.black);
+		if(getText() != null){
+			//split text into array of words
+			String[] words = getText().split(" ");
+			if(words.length >0){
+				//index of word
+				int i = 0;
+				final int SPACING = 2;
+				//y value represents y-coordinate of each line
+				int y = 0 + fm.getHeight()+SPACING;
+				String line = words[i] + " ";
+				i++;
+				//loop as long as there are words left
+				while(i < words.length){
+					//add to current line until horizontal space is outside of bounds
+					while(i < words.length && fm.stringWidth(line) + fm.stringWidth(words[i]) < getWidth()){
+						line += words[i]+" ";
+						i++;
 					}
-					
-					g.drawString(t, 1, linePlacement);
-					linePlacement+= fm.getHeight();
+					//keep adding lines while there is vertical space
+					if(y < getHeight()){
+						g.drawString(line, 2, y);
+						y += fm.getDescent() + fm.getHeight()+SPACING;
+						//rest line
+						line = "";
+					}else{
+						//no more vertical space
+						break;//print no more text
+					}
+				}
+			}
+
 		}
 	}
 
-	
-//	public class Sleeper implements Runnable{
-//		private int number;
-//		private int sleepTime;
-//		
-//		public static void main(String[] args){
-//			Thread one = new Thread(new Sleeper(1));
-//			Thread two = new Thread(new Sleeper(2));
-//			Thread three = new Thread(new Sleeper(3));
-//			Thread four = new Thread(new Sleeper(4));
-//			
-//			one.start();
-//			two.start();
-//			three.start();
-//			four.start(); 
-//		}
-//		// TODO Auto-generated constructor stub
-//	}
-//	
-//	public Sleeper(int number){
-//		this.number = number;
-//		this.sleepTime = (int)(1000*Math.random());
-//		
-//	}
-//
-//	public void run(){
-//		try{
-//			System.out.println("thread num"+ number + " will sleep for " + sleepTime +"ms");
-//			Thread.sleep(sleepTime);
-//			System.out.println("thread num" + number +"woke up");
-//			
-//		}catch(InterruptExcetion e){
-//		e.printStackTrace();	
-//	}
-//	}
 }
