@@ -63,7 +63,7 @@ public class Button extends TextLabel implements Clickable{
 	}
 	
 	public void act(){
-		action.act();
+		if (action != null) action.act();
 	}
 
 	

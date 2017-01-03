@@ -54,7 +54,8 @@ public abstract class Screen {
 //		for(int i = 0; i < viewObjects.size(); i++){
 //			
 //		}
-		for(Visible v: viewObjects){
+		for(int i= 0; i<viewObjects.size(); i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
 	}
@@ -65,6 +66,51 @@ public abstract class Screen {
 	
 	public MouseListener getMouseListener(){
 		return null;
+	}
+
+	public void addObject(Visible v) {
+		// TODO Auto-generated method stub
+		viewObjects.add(v);
+	}
+
+	public void remove(Visible v) {
+		// TODO Auto-generated method stub
+		
+		// in this implementation we have  a very simple command: remove v
+		// however move is a big deal on the ap exam
+		// when an object is removed from a list every other object after that object  is moved up in order
+		// therefore all fo there respective indicies change. you must MUST be aware of this
+		// here is a CLASSIC EXAMPLE:
+		//WRONG: suppose you have a list<interger> with {4,8,7,1} and you want to remove all intergers greater than 5
+		//for(int i = 0; i<list.size; i++){ if(list.get(i)>5) list.remove }
+		//
+		//CORRECT:  
+		//for(int i = 0; i<list.size; i++){ while(list.get(i)>5) list.remove }
+		//
+		//OR
+		//for(int i = 0; i<list.size; i++){ if(list.get(i)>5) list.remove(i); i--; }
+		//for the same reason this doesnt work:
+		//for(interger i:list){ if(i>5) list.remove(i); }
+		//
+		//ONEMORE NOTE: if you call list.remove(int) it will return the objecrt being removed
+		//system.out.p[ritnlmn(list.remopve(0)+was removed);
+		//
+		viewObjects.remove(v);
+	}
+	
+	public void moveToBack(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(0,v);
+		}
+	}
+		
+	public void moveTofront(Visible v){
+		if (viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(v);
+		}
+	
 	}
 
 }

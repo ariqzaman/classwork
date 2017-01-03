@@ -4,9 +4,11 @@ package gui.Screens;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import GUISampleGame.MouseFollower;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
@@ -15,67 +17,86 @@ import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
 
-public class CoordinateScreen extends Screen implements MouseMotionListener {
+public class CoordinateScreen extends Screen implements MouseMotionListener, MouseListener{
 
+	private TextLabel label;
+	private TextArea paragraph;
 	private Button button;
-	private TextLabel text;
-	private TextArea area; 
-	private Graphic aurthur;
+	private Graphic picture;
+	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-//		TextLabel text = 
-//				new TextLabel(20, 200, 500, 40, "button");
-//		viewObjects.add(text);
-		TextArea assignment = new TextArea(20, 200, 150, 400, "ore BABA hum sup LOOO! xdxdxdxdx dxdxdxxdxdxdxdxdxdxdxdx dxdxdxdxxdxdxdxxxdxd");
-		viewObjects.add(assignment);
-//		Button button = new Button(20, 200, 500, 40,  "Button", Color.BLACK, new Action() {
-//
-//			@Override
-//			public void act() {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//		});
-//
-//		
-//		viewObjects.add(button);
-		aurthur = new Graphic(30,30, "resources/sampleImages/aurthur.jpg");
-		viewObjects.add(aurthur);
-	
+		label = new TextLabel(40,45,760,40,"Sample Text");
+		paragraph = new TextArea(40,85,550,500,
+				"This is a whole paragraph. Notice how "
+				+ "as the paragraph gets to the edge"
+				+ " of the page, a new line is created.");
+		button = new Button(40,200,80,40,"Button",
+				new Color(100,100,250),new Action() {
+			
+			public void act() {
+				MouseFollower.game.
+				setScreen(MouseFollower.moveScreen);
+			}
+		});
+		picture = new Graphic(50,50,.5,"resources/sampleImages/aurthur.jpg");
+		viewObjects.add(label);
+		viewObjects.add(paragraph);
+		viewObjects.add(button);
+		viewObjects.add(picture);
 	}
 
-	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		int mx = e.getX();
-		int my = e.getY();
-	//	text.setText("mouse at " + mx + "," + my);
+	public void mouseMoved(MouseEvent m) {
+		label.setText("Mouse at" + m.getX()+", "+m.getY());
 	}
-
+	
 	public MouseMotionListener getMouseMotionListener(){
 		return this;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public MouseListener getMouseListener(){
+		return this;
+	}
+
+	public void mouseClicked(MouseEvent m) {
+		if(button.isHovered(m.getX(), m.getY())){
+			button.act();
+		}
+	}
+
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
+	
+	
+	
+	
+	
+	

@@ -1,4 +1,4 @@
-package GUISampleGame;
+package gui.Screens;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -6,15 +6,17 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import GUISampleGame.MouseFollower;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.ClickableGraphic;
 import gui.components.Graphic;
 import gui.components.Visible;
 
 public class MovementScreen extends Screen implements MouseMotionListener, MouseListener{
 
-	private Graphic mario;
+	private ClickableGraphic aurthur;
 	private Button back;
 	
 	public MovementScreen(int width, int height) {
@@ -23,7 +25,13 @@ public class MovementScreen extends Screen implements MouseMotionListener, Mouse
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		mario = new Graphic(200,200,.25,"resources/sampleImages/mario.png");
+		aurthur = new ClickableGraphic(200,200,.25,"resources/sampleImages/aurthur.jpg");
+		aurthur.setAction(new Action(){
+			public void act(){
+				aurthur.setX(aurthur.getX()+20);
+				aurthur.setY(aurthur.getY()-20);
+			}
+		});
 		back = new Button(50,50,100,60,"Back", 
 				Color.GRAY, new Action() {
 			
@@ -32,7 +40,7 @@ public class MovementScreen extends Screen implements MouseMotionListener, Mouse
 				setScreen(MouseFollower.coordScreen);
 			}
 		});
-		viewObjects.add(mario);
+		viewObjects.add(aurthur);
 		viewObjects.add(back);
 	}
 
@@ -48,6 +56,9 @@ public class MovementScreen extends Screen implements MouseMotionListener, Mouse
 	public void mouseClicked(MouseEvent e) {
 		if(back.isHovered(e.getX(), e.getY())){
 			back.act();
+		}
+		if(aurthur.isHovered(e.getX(), e.getY())){
+			aurthur.act();
 		}
 	}
 
