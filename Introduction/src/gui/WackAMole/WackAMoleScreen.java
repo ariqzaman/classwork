@@ -85,18 +85,18 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable{
 		player = getAPlayer();
 		label = new TextLabel(350, 220, 100, 40, "");
 		timeLabel = new TextLabel(360, 40, 80, 40, "30.0");
-		//         viewObjects.add(player);
+	    viewObjects.add(player);
 		viewObjects.add(timeLabel);
 		viewObjects.add(label);
 
 	}
 	//placeholder until partner finishes players 
-	public PlayerInterface getAPlayer() {
-		 return null;
+	public MoleInterface getAMole() {
+		 return new Mole((int)(Math.random()*getWidth()),(int) (Math.random()*getHeight()));
 	}
 	
-	public MoleInterface getAMole() {
-		return null;
+	public PlayerInterface  getAPlayer() {
+		return new Player();
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable{
 		// TODO Auto-generated method stub
 		changeText("ready...");
 		changeText("set...");
-		changeText("G0000000000000000000000000000000000OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		changeText("G0000OOOOOOOOOOOOOOOOOOOOOOOO");
 		label.setText("");
 	}
 
