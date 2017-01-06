@@ -23,11 +23,11 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable{
 		timeLeft = 30.0;
 		Thread play = new Thread(this);
 		play.start();
-		while(timeLeft>0){
-			updateTimer();
-			updateAllMoles();
-			appearNewMole();
-		}
+//		while(timeLeft>0){
+//			updateTimer();
+//			updateAllMoles();
+//			appearNewMole();
+//		}
 	}
 
 	private void appearNewMole() {
@@ -77,6 +77,8 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable{
 		timeLeft -= .1;
 		timeLabel.setText(""+(int)(timeLeft*10)/10.0);
 	}
+	
+	
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
@@ -106,6 +108,11 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable{
 		changeText("set...");
 		changeText("G0000OOOOOOOOOOOOOOOOOOOOOOOO");
 		label.setText("");
+		while(timeLeft>0){
+			updateTimer();
+			updateAllMoles();
+			appearNewMole();
+		}
 	}
 
 	private void changeText(String string) {
